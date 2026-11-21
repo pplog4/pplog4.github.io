@@ -1,9 +1,10 @@
-/* PPログ用：JAL Fラウンジ 鮨鶴亭 週替わりネタのカレンダー表示部品。
+/* PPログ用：JAL Fラウンジ 鮨鶴亭 週替わりネタのカレンダー表示部品（メイン Muse の元の画面に合わせた形）。
  * 使い方：<div id="pplog-sushi-cal"></div><script src="https://pplog4.github.io/sushi-calendar/embed.js" defer></script>
  * データは Muse（メイン）が GitHub pplog4/sushi-calendar-data に直接書く。Mac・Bot は中継しない。
  * 最新（sushi-calendar.json）と、Actions が検査に通した版（last-good.json）を読み、
  * 最新がこのページの検査にも通ればそれを、通らなければ last-good を表示して「更新を確認中」と出す。
- * 月ごとのカレンダーで、提供期間の日付のマスに空港とネタを載せる。日付を押すと、その週の詳細（ラウンジ・出典）を下に出す。
+ * 表示：月ごとのカード（新しい月が上）。週の行ごとに、提供期間を色付きの帯で日付の下に描く。
+ * 3品とも確認済みの週は緑、未確認の品がある週はからし色。帯を押すと、その週の詳細（空港・ラウンジ・出典）をカードの下に出す。
  * データは文字として入れ、HTMLとして解釈しない。 */
 (function () {
   "use strict";
@@ -35,7 +36,7 @@
     return true;
   }
 
-  // ---- 期間とネタの読み取り（detail の書き方：「A・B・C（〜MM-DD・補足）」）
+  // ---- 期間とネタの読み取り（detail の書き方：「A・B・C（〜MM-DD・補足）」、分からない品は「3品目未確認」）
   function ymd(d) { return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate(); }
   function addDays(d, n) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); }
   function parseItem(it, nextStart) {
@@ -51,15 +52,12 @@
     var paren = it.detail.indexOf("（");
     var neta = (paren > 0 ? it.detail.slice(0, paren) : it.detail).split("・").filter(function (x) { return x; });
     var note = paren > 0 ? it.detail.slice(paren + 1).replace(/）\s*$/, "") : "";
-    return { it: it, start: start, end: end, neta: neta, note: note };
+    var known = neta.filter(function (n) { return !/未確認/.test(n); });
+    var missing = neta.length - known.length;
+    var label = known.slice();
+    if (missing) label.push("＋" + missing + "品未確認");
+    return { it: it, start: start, end: end, neta: neta, note: note, label: label.join("・"), ok: missing === 0 };
   }
-  function airportKey(a) {
-    if (/羽田/.test(a) && /成田/.test(a)) return "both";
-    if (/羽田/.test(a)) return "hnd";
-    if (/成田/.test(a)) return "nrt";
-    return "unk";
-  }
-  var AP_SHORT = { both: "羽・成", hnd: "羽田", nrt: "成田", unk: "?" };
   function srcLabel(u) {
     var h = (u.split("/")[2] || "").toLowerCase();
     if (/(^|\.)jal\.co\.jp$/.test(h)) return "JAL公式";
@@ -69,36 +67,32 @@
 
   // ---- 見た目。クラス名はすべて pplog-sushi- で始め、ブログのCSSとぶつからないようにする（下の「P-」を置き換える）
   var CSS = [
-    ".P-root{margin:1em 0;font-size:15px;line-height:1.5;color:#222;max-width:100%;box-sizing:border-box}",
+    ".P-root{margin:1em 0;padding:0;color:#222;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',Meiryo,sans-serif;line-height:1.4;max-width:720px;box-sizing:border-box}",
     ".P-root *{box-sizing:border-box}",
-    ".P-root .P-note{margin:0 0 .4em;font-size:12.5px;color:#555}",
-    ".P-root .P-warn{margin:0 0 .6em;padding:6px 10px;background:#fff8e1;border-left:4px solid #ffc107;font-size:13px}",
-    ".P-root .P-nav{display:flex;align-items:center;justify-content:space-between;gap:6px;margin:.8em 0 .4em}",
-    ".P-root .P-nav button{border:1px solid #ccc;background:#fff;border-radius:6px;padding:6px 12px;font-size:14px;cursor:pointer;color:#222;margin:0;line-height:1.4}",
-    ".P-root .P-nav button:disabled{opacity:.35;cursor:default}",
-    ".P-root .P-nav select{font-size:15px;font-weight:bold;padding:4px 6px;border:1px solid #ccc;border-radius:6px;background:#fff;color:#222;max-width:60%;margin:0}",
-    ".P-root .P-legend{display:flex;flex-wrap:wrap;gap:8px;margin:.3em 0 .5em;font-size:12px}",
-    ".P-root .P-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid #ddd;border-left:1px solid #ddd}",
-    ".P-root .P-wd{font-size:12px;text-align:center;padding:4px 0;background:#f4f4f4;border-right:1px solid #ddd;border-bottom:1px solid #ddd}",
-    ".P-root .P-wd.P-sun,.P-root .P-day.P-sun .P-num{color:#c62828}.P-root .P-wd.P-sat,.P-root .P-day.P-sat .P-num{color:#1565c0}",
-    ".P-root .P-day{display:block;width:100%;min-width:0;min-height:96px;margin:0;padding:3px 4px;border:0;border-right:1px solid #ddd;border-bottom:1px solid #ddd;border-radius:0;background:#fff;overflow:hidden;text-align:left;vertical-align:top;font:inherit;color:inherit;-webkit-appearance:none;appearance:none;box-shadow:none}",
-    ".P-root .P-day.P-out{background:#fafafa}.P-root .P-day.P-out .P-num{color:#bbb}",
-    ".P-root .P-day.P-has{cursor:pointer}.P-root .P-day.P-has:hover{background:#fff6f6}",
-    ".P-root .P-day.P-sel{background:#fff0f0;box-shadow:inset 0 0 0 2px #c00}",
-    ".P-root .P-num{font-size:12px;font-weight:bold;display:inline-block;line-height:1.5}",
-    ".P-root .P-day.P-today .P-num{background:#c00;color:#fff !important;border-radius:10px;padding:0 6px}",
-    ".P-root .P-ap{display:inline-block;font-size:10.5px;line-height:1.45;padding:0 4px;border-radius:3px;color:#fff;margin-left:3px;vertical-align:1px;white-space:nowrap}",
-    ".P-root .P-legend .P-ap{margin-left:0}",
-    ".P-root .P-ap-hnd{background:#1565c0}.P-root .P-ap-nrt{background:#2e7d32}.P-root .P-ap-both{background:#6a1b9a}.P-root .P-ap-unk{background:#888}",
-    ".P-root .P-band{display:block;height:4px;border-radius:2px;margin:2px 0 3px}",
-    ".P-root .P-neta{font-size:11.5px;line-height:1.35;margin:1px 0;overflow-wrap:anywhere}",
-    ".P-root .P-neta.P-unk{color:#999}",
-    ".P-root .P-detail{margin-top:.8em;padding:10px 12px;border:1px solid #ddd;border-radius:8px;background:#fcfcfc}",
-    ".P-root .P-detail .P-h{margin:0 0 .3em;font-size:14px;font-weight:bold}",
-    ".P-root .P-detail .P-p{margin:.2em 0;font-size:14px}",
-    // スマホ幅：空港の名札を隠して色の帯だけにし、ネタを小さく。詳細は押して下に出す
-    "@media (max-width:600px){.P-root .P-day{min-height:70px;padding:2px 2px}.P-root .P-day .P-ap{display:none}.P-root .P-neta{font-size:9.5px;line-height:1.25}.P-root .P-nav button{padding:6px 8px;font-size:13px}}",
-    "@media (max-width:400px){.P-root .P-neta{font-size:9px}.P-root .P-num{font-size:11px}}"
+    ".P-root .P-note{margin:0 2px .35em;font-size:12px;color:#666;line-height:1.5}",
+    ".P-root .P-note a{color:inherit;text-decoration:underline}",
+    ".P-root .P-warn{margin:0 0 .6em;padding:6px 10px;background:#fff8e1;border-left:4px solid #ffc107;font-size:13px;border-radius:4px}",
+    ".P-root .P-key{display:inline-block;width:18px;height:10px;border-radius:3px;vertical-align:-1px;margin:0 3px 0 8px}",
+    ".P-root .P-card{background:#fff;border:1px solid #dcdcdc;border-radius:10px;padding:14px 12px 22px;margin:0 0 18px}",
+    ".P-root .P-title{margin:2px 0 9px;padding:0;font-size:18px;font-weight:700;letter-spacing:.01em;color:#222;line-height:1.3;border:0;background:none}",
+    ".P-root .P-wdrow,.P-root .P-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}",
+    ".P-root .P-wdrow{border-bottom:1px solid #e6e6e6;padding-bottom:5px}",
+    ".P-root .P-wd{text-align:center;font-size:12px;color:#555}",
+    ".P-root .P-sun{color:#d32f2f}.P-root .P-sat{color:#1e5bbf}",
+    ".P-root .P-week{grid-template-rows:25px 18px;grid-auto-rows:18px;padding-bottom:7px}",
+    ".P-root .P-week+.P-week{border-top:1px solid #ececec}",
+    ".P-root .P-num{grid-row:1;align-self:end;padding:0 0 3px 5px;font-size:14.5px;font-variant-numeric:tabular-nums}",
+    ".P-root .P-num.P-out{color:#c4c4c4}",
+    ".P-root .P-bar{display:block;min-width:0;height:18px;margin:0 3px 0 0;padding:0 5px;border:0;border-radius:5px;color:#fff;font:inherit;font-size:11.5px;line-height:18px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;-webkit-appearance:none;appearance:none;box-shadow:none;letter-spacing:0}",
+    // 次の行へ続く帯は、見本と同じく右端まで平らに伸ばす
+    ".P-root .P-bar.P-cont{margin-right:0;border-top-right-radius:0;border-bottom-right-radius:0}",
+    ".P-root .P-ok{background:#2e8b57}.P-root .P-ng{background:#d9a441}",
+    ".P-root .P-bar.P-on{box-shadow:inset 0 0 0 2px rgba(0,0,0,.35)}",
+    ".P-root .P-detail{margin:10px 2px 0;padding:9px 11px;border-radius:8px;background:#f6f6f6;font-size:13.5px;line-height:1.55}",
+    ".P-root .P-detail[hidden]{display:none}",
+    ".P-root .P-detail .P-h{font-weight:700;margin-bottom:2px}",
+    ".P-root .P-detail p{margin:2px 0}",
+    "@media (min-width:601px){.P-root .P-title{font-size:20px}.P-root .P-week{grid-template-rows:28px 20px}.P-root .P-num{font-size:15.5px;padding-left:7px}.P-root .P-bar{height:20px;line-height:20px;font-size:12.5px;padding:0 7px}}"
   ].join("\n").replace(/P-/g, P);
 
   function injectCss() {
@@ -113,6 +107,23 @@
     if (cls) n.className = cls.split(" ").filter(Boolean).map(function (c) { return P + c; }).join(" ");
     if (text != null) n.textContent = String(text);
     return n;
+  }
+  function fmt(t) { return (t.getMonth() + 1) + "/" + t.getDate() + "（" + WEEK[t.getDay()] + "）"; }
+
+  function showDetail(det, w) {
+    det.textContent = "";
+    det._w = w;
+    det.hidden = false;
+    det.appendChild(el("div", "h", fmt(w.start) + "〜" + fmt(w.end) + "　" + w.it.airport));
+    det.appendChild(el("p", null, w.neta.join("・")));
+    if (w.note) det.appendChild(el("p", null, w.note));
+    det.appendChild(el("p", null, w.it.lounge));
+    if (w.it.source_url) {
+      var p = el("p", null, "出典：");
+      var a = document.createElement("a");
+      a.textContent = srcLabel(w.it.source_url); a.href = w.it.source_url; a.target = "_blank"; a.rel = "noopener nofollow";
+      p.appendChild(a); det.appendChild(p);
+    }
   }
 
   function build(root, d, pending) {
@@ -130,98 +141,74 @@
         if (months.indexOf(k) < 0) months.push(k);
       }
     });
-    months.sort(function (a, b) { return a - b; });
-    var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    var tk = today.getFullYear() * 100 + today.getMonth() + 1;
-    var cur = months.indexOf(tk) >= 0 ? tk : months[months.length - 1];
+    months.sort(function (a, b) { return b - a; });   // 新しい月が上
 
     var box = el("div", "root");
     if (pending) box.appendChild(el("p", "warn", "更新を確認中です。前回の内容を表示しています。"));
-    box.appendChild(el("p", "note", "JALファーストクラスラウンジの寿司カウンター「鮨 鶴亭」の週替わりネタです。日付を押すと、その週の詳細と出典が下に出ます。内容は変わることがあります。ご利用前にJAL公式サイトでご確認ください。"));
-    box.appendChild(el("p", "note", "最終更新：" + d.updated + "　掲載：" + src[0].date + "〜" + src[src.length - 1].date + "（" + src.length + "件）"));
-    if (str(d.hours)) box.appendChild(el("p", "note", "提供時間：" + d.hours));
 
-    var nav = el("div", "nav");
-    var prev = el("button", null, "‹ 前の月"), next = el("button", null, "次の月 ›"), sel = el("select");
-    prev.type = next.type = "button";
-    sel.setAttribute("aria-label", "表示する月");
+    var bars = [];
     months.forEach(function (k) {
-      var o = document.createElement("option");
-      o.value = String(k); o.textContent = Math.floor(k / 100) + "年" + (k % 100) + "月";
-      sel.appendChild(o);
+      var y = Math.floor(k / 100), mo = k % 100 - 1;
+      var card = el("section", "card");
+      card.appendChild(el("h3", "title", y + "年" + (mo + 1) + "月"));
+      var wd = el("div", "wdrow");
+      WEEK.split("").forEach(function (c, j) { wd.appendChild(el("div", "wd" + (j === 0 ? " sun" : j === 6 ? " sat" : ""), c)); });
+      card.appendChild(wd);
+      var first = new Date(y, mo, 1), last = new Date(y, mo + 1, 0);
+      var start = addDays(first, -first.getDay());
+      var rows = Math.ceil((first.getDay() + last.getDate()) / 7);
+      var detail = el("div", "detail");
+      detail.hidden = true;
+      for (var r = 0; r < rows; r++) {
+        var row = el("div", "week");
+        var days = [];
+        for (var c = 0; c < 7; c++) {
+          var t = addDays(start, r * 7 + c);
+          days.push(t);
+          var n = el("div", "num" + (t.getMonth() !== mo ? " out" : c === 0 ? " sun" : c === 6 ? " sat" : ""), t.getDate());
+          n.style.gridColumn = String(c + 1);
+          row.appendChild(n);
+        }
+        // 同じ週が続く日をまとめて1本の帯にする（行をまたぐ期間は行ごとに分かれる）
+        var c0 = 0;
+        while (c0 < 7) {
+          var w = byDay[ymd(days[c0])];
+          if (!w) { c0++; continue; }
+          var c1 = c0;
+          while (c1 + 1 < 7 && byDay[ymd(days[c1 + 1])] === w) c1++;
+          var cont = c1 === 6 && w.end > days[6];
+          var b = el("button", "bar " + (w.ok ? "ok" : "ng") + (cont ? " cont" : ""), w.label);
+          b.type = "button";
+          b.style.gridColumn = (c0 + 1) + " / " + (c1 + 2);
+          b.style.gridRow = "2";
+          b.title = w.label;
+          b.setAttribute("aria-label", fmt(w.start) + "〜" + fmt(w.end) + " " + w.label);
+          bars.push({ node: b, w: w, det: detail });
+          row.appendChild(b);
+          c0 = c1 + 1;
+        }
+        card.appendChild(row);
+      }
+      card.appendChild(detail);
+      box.appendChild(card);
     });
-    nav.appendChild(prev); nav.appendChild(sel); nav.appendChild(next);
-    box.appendChild(nav);
-    var legend = el("div", "legend");
-    [["hnd", "羽田"], ["nrt", "成田"], ["both", "羽田・成田"], ["unk", "空港未確認"]].forEach(function (a) {
-      legend.appendChild(el("span", "ap ap-" + a[0], a[1]));
+    bars.forEach(function (x) {
+      x.node.addEventListener("click", function () {
+        var open = !x.det.hidden && x.det._w === x.w;
+        bars.forEach(function (y) { y.node.classList.toggle(P + "on", !open && y.w === x.w && y.det === x.det); });
+        if (open) { x.det.hidden = true; x.det._w = null; return; }
+        showDetail(x.det, x.w);
+      });
     });
-    box.appendChild(legend);
-    var gridWrap = el("div", "gridwrap");
-    box.appendChild(gridWrap);
-    var detail = el("div", "detail");
-    box.appendChild(detail);
+    // 出典と最終更新日は、見本の画面の邪魔にならないよう下に小さく出す
+    var top = el("p", "note", "最終更新 " + d.updated + "（" + src.length + "件）");
+    top.appendChild(el("span", "key ok")); top.appendChild(document.createTextNode("3品確認済み"));
+    top.appendChild(el("span", "key ng")); top.appendChild(document.createTextNode("未確認の品あり"));
+    box.appendChild(top);
+    box.appendChild(el("p", "note", "帯を押すと、空港・ラウンジ・出典が出ます。内容は変わることがあります。ご利用前にJAL公式サイトでご確認ください。"));
+    if (str(d.hours)) box.appendChild(el("p", "note", "提供時間：" + d.hours));
     if (typeof d.sources === "string" && d.sources) box.appendChild(el("p", "note", "出典：" + d.sources.slice(0, 400)));
     root.appendChild(box);
-
-    function fmt(t) { return (t.getMonth() + 1) + "/" + t.getDate() + "（" + WEEK[t.getDay()] + "）"; }
-    function showDetail(w) {
-      detail.textContent = "";
-      if (!w) { detail.appendChild(el("p", "note", "この月の記録はありません。")); return; }
-      detail.appendChild(el("div", "h", fmt(w.start) + "〜" + fmt(w.end) + "　" + w.it.airport));
-      detail.appendChild(el("p", "p", w.neta.join("・")));
-      if (w.note) detail.appendChild(el("p", "note", w.note));
-      detail.appendChild(el("p", "note", w.it.lounge));
-      if (w.it.source_url) {
-        var p = el("p", "note", "出典：");
-        var a = document.createElement("a");
-        a.textContent = srcLabel(w.it.source_url); a.href = w.it.source_url; a.target = "_blank"; a.rel = "noopener nofollow";
-        p.appendChild(a); detail.appendChild(p);
-      }
-    }
-
-    function draw() {
-      sel.value = String(cur);
-      var i = months.indexOf(cur);
-      prev.disabled = i <= 0; next.disabled = i >= months.length - 1;
-      var y = Math.floor(cur / 100), mo = cur % 100 - 1;
-      var first = new Date(y, mo, 1), last = new Date(y, mo + 1, 0), grid = el("div", "grid");
-      WEEK.split("").forEach(function (w, j) { grid.appendChild(el("div", "wd" + (j === 0 ? " sun" : j === 6 ? " sat" : ""), w)); });
-      var start = addDays(first, -first.getDay());
-      var cells = Math.ceil((first.getDay() + last.getDate()) / 7) * 7;
-      var firstInMonth = null, todayWeek = null, nodes = [];
-      for (var c = 0; c < cells; c++) {
-        var t = addDays(start, c), w = byDay[ymd(t)], inMonth = t.getMonth() === mo;
-        var cls = "day" + (inMonth ? "" : " out") + (t.getDay() === 0 ? " sun" : t.getDay() === 6 ? " sat" : "") +
-          (w ? " has" : "") + (ymd(t) === ymd(today) ? " today" : "");
-        var cell = el(w ? "button" : "div", cls);
-        cell.appendChild(el("span", "num", t.getDate()));
-        if (w) {
-          cell.type = "button";
-          if (inMonth && !firstInMonth) firstInMonth = w;
-          if (ymd(t) === ymd(today)) todayWeek = w;
-          var k = airportKey(w.it.airport);
-          cell.appendChild(el("span", "ap ap-" + k, AP_SHORT[k]));
-          cell.appendChild(el("span", "band ap-" + k));
-          w.neta.forEach(function (n) { cell.appendChild(el("div", "neta" + (/未確認/.test(n) ? " unk" : ""), n)); });
-          cell.setAttribute("aria-label", (t.getMonth() + 1) + "月" + t.getDate() + "日 " + w.it.airport + " " + w.neta.join("・"));
-          nodes.push({ node: cell, w: w });
-        }
-        grid.appendChild(cell);
-      }
-      function pick(wk) {
-        nodes.forEach(function (x) { x.node.classList.toggle(P + "sel", x.w === wk); });
-        showDetail(wk);
-      }
-      nodes.forEach(function (x) { x.node.addEventListener("click", function () { pick(x.w); }); });
-      gridWrap.textContent = "";
-      gridWrap.appendChild(grid);
-      pick(todayWeek || firstInMonth);
-    }
-    prev.addEventListener("click", function () { var i = months.indexOf(cur); if (i > 0) { cur = months[i - 1]; draw(); } });
-    next.addEventListener("click", function () { var i = months.indexOf(cur); if (i < months.length - 1) { cur = months[i + 1]; draw(); } });
-    sel.addEventListener("change", function () { cur = Number(sel.value); draw(); });
-    draw();
   }
 
   function fail(root) {
