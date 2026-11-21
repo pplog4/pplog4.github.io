@@ -4,7 +4,8 @@
  * 最新（sushi-calendar.json）と、Actions が検査に通した版（last-good.json）を読み、
  * 最新がこのページの検査にも通ればそれを、通らなければ last-good を表示して「更新を確認中」と出す。
  * 表示：月ごとのカード（新しい月が上）。週の行ごとに、提供期間を色付きの帯で日付の下に描く。
- * 3品とも確認済みの週は緑、未確認の品がある週はからし色。帯を押すと、その週の詳細（空港・ラウンジ・出典）をカードの下に出す。
+ * 帯の色はネタ（確認できた品目の組み合わせ）ごと。同じ組み合わせは同じ色、違えば違う色（落ち着いた10色）。
+ * 未確認の品がある週は、帯の文字「＋1品未確認」と点線の縁取りで示す。帯を押すと、その週の詳細（空港・ラウンジ・出典）をカードの下に出す。
  * データは文字として入れ、HTMLとして解釈しない。 */
 (function () {
   "use strict";
@@ -56,7 +57,39 @@
     var missing = neta.length - known.length;
     var label = known.slice();
     if (missing) label.push("＋" + missing + "品未確認");
-    return { it: it, start: start, end: end, neta: neta, note: note, label: label.join("・"), ok: missing === 0 };
+    return { it: it, start: start, end: end, neta: neta, note: note, label: label.join("・"), ok: missing === 0,
+             combo: known.join("・") };
+  }
+
+  // ---- ネタの組み合わせ → 色。見本の緑・からし色の系統に近い、白文字が読める落ち着いた10色。
+  // 並び順は、隣の番号どうしが似た色にならないようにしてある。
+  var PALETTE = ["#2e8b57", "#c8952e", "#4f7cac", "#b5655b", "#7a6aa8", "#3f8f8f", "#8a9a3b", "#b4708f", "#a07a4f", "#5f6f7f"];
+  function hash(s) {   // FNV-1a。組み合わせの文字だけで決まるので、ページを開くたびに変わらない
+    var h = 2166136261;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; }
+    return h;
+  }
+  // 組み合わせごとに1色。前後に並ぶ週（データの順で隣）の組み合わせどうしは別の色にする。
+  // 古い順に初めて出た組み合わせから、文字列で決まる色を起点に、隣の組み合わせが使っていない色を選ぶ。
+  // 入力（データ）だけで決まるので、ページを開くたびに変わらない。
+  function assignColors(weeks) {
+    var keys = weeks.map(function (w) { return w.combo || "（品目未確認）"; });
+    var order = [], nb = {};
+    keys.forEach(function (k, i) {
+      if (!nb[k]) { nb[k] = {}; order.push(k); }
+      [keys[i - 1], keys[i + 1]].forEach(function (o) { if (o !== undefined && o !== k) nb[k][o] = true; });
+    });
+    var map = {};
+    order.forEach(function (k) {
+      var start = hash(k) % PALETTE.length, pick = start;
+      for (var n = 0; n < PALETTE.length; n++) {
+        var c = (start + n) % PALETTE.length, clash = false;
+        for (var o in nb[k]) if (map[o] === c) { clash = true; break; }
+        if (!clash) { pick = c; break; }
+      }
+      map[k] = pick;
+    });
+    weeks.forEach(function (w, i) { w.color = PALETTE[map[keys[i]]]; });
   }
   function srcLabel(u) {
     var h = (u.split("/")[2] || "").toLowerCase();
@@ -86,7 +119,9 @@
     ".P-root .P-bar{display:block;min-width:0;height:18px;margin:0 3px 0 0;padding:0 5px;border:0;border-radius:5px;color:#fff;font:inherit;font-size:11.5px;line-height:18px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;-webkit-appearance:none;appearance:none;box-shadow:none;letter-spacing:0}",
     // 次の行へ続く帯は、見本と同じく右端まで平らに伸ばす
     ".P-root .P-bar.P-cont{margin-right:0;border-top-right-radius:0;border-bottom-right-radius:0}",
-    ".P-root .P-ok{background:#2e8b57}.P-root .P-ng{background:#d9a441}",
+    // 未確認の品がある週：白い点線の縁取り（色はネタごとのまま）
+    ".P-root .P-bar.P-ng{outline:1.5px dashed rgba(255,255,255,.95);outline-offset:-3px}",
+    ".P-root .P-key{background:#999}.P-root .P-key.P-ng{outline:1.5px dashed #fff;outline-offset:-3px}",
     ".P-root .P-bar.P-on{box-shadow:inset 0 0 0 2px rgba(0,0,0,.35)}",
     ".P-root .P-detail{margin:10px 2px 0;padding:9px 11px;border-radius:8px;background:#f6f6f6;font-size:13.5px;line-height:1.55}",
     ".P-root .P-detail[hidden]{display:none}",
@@ -130,6 +165,7 @@
     root.textContent = "";
     var src = d.items.slice().sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
     var weeks = src.map(function (it, i) { return parseItem(it, src[i + 1] ? realDate(src[i + 1].date).d : null); });
+    assignColors(weeks);
     var byDay = {};
     weeks.forEach(function (w) {   // 重なる日は、後ろ（新しい開始日）の週を優先
       for (var t = w.start; t <= w.end; t = addDays(t, 1)) byDay[ymd(t)] = w;
@@ -179,6 +215,7 @@
           var cont = c1 === 6 && w.end > days[6];
           var b = el("button", "bar " + (w.ok ? "ok" : "ng") + (cont ? " cont" : ""), w.label);
           b.type = "button";
+          b.style.background = w.color;
           b.style.gridColumn = (c0 + 1) + " / " + (c1 + 2);
           b.style.gridRow = "2";
           b.title = w.label;
@@ -202,8 +239,8 @@
     });
     // 出典と最終更新日は、見本の画面の邪魔にならないよう下に小さく出す
     var top = el("p", "note", "最終更新 " + d.updated + "（" + src.length + "件）");
-    top.appendChild(el("span", "key ok")); top.appendChild(document.createTextNode("3品確認済み"));
-    top.appendChild(el("span", "key ng")); top.appendChild(document.createTextNode("未確認の品あり"));
+    top.appendChild(document.createTextNode("　帯の色はネタの組み合わせごと。"));
+    top.appendChild(el("span", "key ng")); top.appendChild(document.createTextNode("点線の帯は未確認の品あり"));
     box.appendChild(top);
     box.appendChild(el("p", "note", "帯を押すと、空港・ラウンジ・出典が出ます。内容は変わることがあります。ご利用前にJAL公式サイトでご確認ください。"));
     if (str(d.hours)) box.appendChild(el("p", "note", "提供時間：" + d.hours));
