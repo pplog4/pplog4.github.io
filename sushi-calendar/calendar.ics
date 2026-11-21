@@ -1,0 +1,584 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PPlog//F-lounge sushi calendar//JA
+CALSCALE:GREGORIAN
+X-WR-CALNAME:JAL Fラウンジ寿司カレンダー
+X-WR-TIMEZONE:Asia/Tokyo
+BEGIN:VEVENT
+UID:d4857cb76e5b11c3@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20190401
+DTEND;VALUE=DATE:20190402
+SUMMARY:成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:中トロ・ヤリイカ・タマゴ（〜04-03・週替わり3
+ 貫セット）\n出典: https://press.jal.co.jp/ja/release/201903/005099.
+ html
+URL:https://press.jal.co.jp/ja/release/201903/005099.html
+END:VEVENT
+BEGIN:VEVENT
+UID:aa0b405ba6531b2b@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20190404
+DTEND;VALUE=DATE:20190405
+SUMMARY:成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:天然ヒラメ・赤海老・太巻き（〜04-10）\n出典: 
+ https://press.jal.co.jp/ja/release/201903/005099.html
+URL:https://press.jal.co.jp/ja/release/201903/005099.html
+END:VEVENT
+BEGIN:VEVENT
+UID:73e10de615799367@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20190411
+DTEND;VALUE=DATE:20190412
+SUMMARY:成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:マグロ天身・銀鮭・タマゴ（〜04-17）\n出典: htt
+ ps://press.jal.co.jp/ja/release/201903/005099.html
+URL:https://press.jal.co.jp/ja/release/201903/005099.html
+END:VEVENT
+BEGIN:VEVENT
+UID:7ada645736e230b2@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20190418
+DTEND;VALUE=DATE:20190419
+SUMMARY:成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:中トロ・ヤリイカ・タマゴ（〜04-24）\n出典: htt
+ ps://press.jal.co.jp/ja/release/201903/005099.html
+URL:https://press.jal.co.jp/ja/release/201903/005099.html
+END:VEVENT
+BEGIN:VEVENT
+UID:3fcd82c8e249b2f3@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20190425
+DTEND;VALUE=DATE:20190426
+SUMMARY:成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:マグロ天身・キス昆布締め・タマゴ（〜05-01）\
+ n出典: https://press.jal.co.jp/ja/release/201903/005099.html
+URL:https://press.jal.co.jp/ja/release/201903/005099.html
+END:VEVENT
+BEGIN:VEVENT
+UID:e93a8a0229ea94a7@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20240901
+DTEND;VALUE=DATE:20240902
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:マグロ天身・コハダ・太巻き（〜09-01）\n出典: 
+ https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:f6154339eacb3b3e@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20240902
+DTEND;VALUE=DATE:20240903
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・サーモン・玉子（〜09-08）\
+ n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:22075b97a6bb5bc4@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20240909
+DTEND;VALUE=DATE:20240910
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・ふぐ・玉子（〜09-15）\n出
+ 典: https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:1a598a8fbd3ee4e1@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20240916
+DTEND;VALUE=DATE:20240917
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ中トロ・鰻・玉子（〜09-22）\n出典: htt
+ ps://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:062552f5efd5838f@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20240923
+DTEND;VALUE=DATE:20240924
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・甘エビ・太巻き（〜09-29）\
+ n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:6d800104ec3f532b@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20240930
+DTEND;VALUE=DATE:20241001
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・近大生まれ真鯛・玉子（〜
+ 10-06）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:705fff68d0ba0e52@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241007
+DTEND;VALUE=DATE:20241008
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ天身・サワラ炙り・玉子（〜10-13）\n
+ 出典: https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:9cddcafaae5be04c@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241014
+DTEND;VALUE=DATE:20241015
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・鹿児島県産カンパチ・玉子
+ （〜10-20）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/240831
+ /
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:0291aee2d105378f@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241021
+DTEND;VALUE=DATE:20241022
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・ヤリイカ・太巻き（〜10-27
+ ）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:a41af243b68da35d@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241028
+DTEND;VALUE=DATE:20241029
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・のどぐろ・玉子（〜11-03）\
+ n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:7229e499440e8654@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241104
+DTEND;VALUE=DATE:20241105
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・近大生まれ真鯛・玉子（〜
+ 11-10）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:e40c15da8e61393c@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241111
+DTEND;VALUE=DATE:20241112
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ中トロ・サヨリ・玉子（〜11-17）\n出
+ 典: https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:12afae6756203481@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241118
+DTEND;VALUE=DATE:20241119
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ天身・鹿児島県産カンパチ・玉子（〜
+ 11-24）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:d64a838b42f666b0@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241125
+DTEND;VALUE=DATE:20241126
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・サーモン・太巻き（〜12-01
+ ・11/25〜30と12/01統合）\n出典: https://www.jal.co.jp/jp/ja/info/2
+ 024/inter/240831/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/240831/
+END:VEVENT
+BEGIN:VEVENT
+UID:56f6e35a3e12fbb9@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241202
+DTEND;VALUE=DATE:20241203
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・近大生まれ真鯛・玉子（〜
+ 12-08）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:8f07205c5fe03bed@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241209
+DTEND;VALUE=DATE:20241210
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ天身・カラスガレイ縁側・玉子（〜12-
+ 15）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:ab9d2ed4a0e7b933@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241216
+DTEND;VALUE=DATE:20241217
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・鹿児島県産カンパチ・玉子
+ （〜12-22）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/241127
+ /
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:86dc7788044b09d4@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241223
+DTEND;VALUE=DATE:20241224
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・赤エビ・太巻き（〜12-29）\
+ n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:9ad2eb4eb57ebc81@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20241230
+DTEND;VALUE=DATE:20241231
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・近大生まれブリヒラ・玉子
+ （〜2025-01-05）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/2
+ 41127/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:22d70e135e4274c7@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250106
+DTEND;VALUE=DATE:20250107
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ中トロ・コハダ・玉子（〜01-12）\n出
+ 典: https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:2f597ebc10ebf04a@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250113
+DTEND;VALUE=DATE:20250114
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ天身・鹿児島県産カンパチ・玉子（〜
+ 01-19）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:a4c2c7a2d67bf7b1@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250120
+DTEND;VALUE=DATE:20250121
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・ふぐ・太巻き（〜01-26）\n
+ 出典: https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:21c1f590638f5987@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250127
+DTEND;VALUE=DATE:20250128
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・近大生まれブリヒラ・玉子
+ （〜02-02）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/241127
+ /
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:62cbd89de38e03e9@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250203
+DTEND;VALUE=DATE:20250204
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ天身・サワラ・玉子（〜02-09）\n出典: 
+ https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:b1fc10200edf7e13@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250210
+DTEND;VALUE=DATE:20250211
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・鹿児島県産カンパチ・玉子
+ （〜02-16）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/241127
+ /
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:75d268ff59638102@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250217
+DTEND;VALUE=DATE:20250218
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・ヤリイカ・太巻き（〜02-23
+ ）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:4106efa5813b5e74@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250224
+DTEND;VALUE=DATE:20250225
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・のどぐろ・玉子（〜03-02・2
+ 表重複分統合）\n出典: https://www.jal.co.jp/jp/ja/info/2024/inter
+ /241127/
+URL:https://www.jal.co.jp/jp/ja/info/2024/inter/241127/
+END:VEVENT
+BEGIN:VEVENT
+UID:188259f47d639a9f@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250303
+DTEND;VALUE=DATE:20250304
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・近大生まれブリヒラ・玉子
+ （〜03-09）\n出典: https://www.jal.co.jp/jp/ja/info/2025/inter/250226
+ /
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:c86854d7ffec38ab@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250310
+DTEND;VALUE=DATE:20250311
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ中トロ・サヨリ・玉子（〜03-16）\n出
+ 典: https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:2f6abaf2c06e31fe@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250317
+DTEND;VALUE=DATE:20250318
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・サーモン・太巻き（〜03-23
+ ）\n出典: https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:73f8b131fa617239@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250324
+DTEND;VALUE=DATE:20250325
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ天身・カラスガレイ縁側・玉子（〜03-
+ 30）\n出典: https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:a5bc1d226d1b42fc@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250331
+DTEND;VALUE=DATE:20250401
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・真鯛・玉子（〜04-06）\n出
+ 典: https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:55bec7e82515ceb3@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250407
+DTEND;VALUE=DATE:20250408
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・赤エビ・太巻き（〜04-13）\
+ n出典: https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:e708f4e089c2e118@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250414
+DTEND;VALUE=DATE:20250415
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ天身・コハダ・玉子（〜04-20）\n出典: 
+ https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:5edd9af82d75407e@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250421
+DTEND;VALUE=DATE:20250422
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・紅富士・玉子（〜04-27）\n
+ 出典: https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:7a2d55ac43c004f4@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250428
+DTEND;VALUE=DATE:20250429
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・真鯛・玉子（〜05-04）\n出
+ 典: https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:7e458f89c1ee41c2@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250505
+DTEND;VALUE=DATE:20250506
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ中トロ・河豚・玉子（〜05-11）\n出典: 
+ https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:df662bac2d852128@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250512
+DTEND;VALUE=DATE:20250513
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・サワラ・太巻き（〜05-18）\
+ n出典: https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:9fa6b9eaf1492b77@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250519
+DTEND;VALUE=DATE:20250520
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ天身・ヤリイカ・玉子（〜05-25）\n出
+ 典: https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:5fbc2194031a848e@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20250526
+DTEND;VALUE=DATE:20250527
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:メバチマグロ天身・のどぐろ・玉子（〜06-01）\
+ n出典: https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+URL:https://www.jal.co.jp/jp/ja/info/2025/inter/250226/
+END:VEVENT
+BEGIN:VEVENT
+UID:93f61d980d43a664@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20260420
+DTEND;VALUE=DATE:20260421
+SUMMARY:羽田・成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ中トロ・のどぐろ・うなぎ白焼（〜05-
+ 03・3品確定）\n出典: https://x.com/syachou08/status/204636141969698
+ 8422
+URL:https://x.com/syachou08/status/2046361419696988422
+END:VEVENT
+BEGIN:VEVENT
+UID:011bab675d64bf84@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20260504
+DTEND;VALUE=DATE:20260505
+SUMMARY:未確認 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:マグロ天身・鯛・玉子（〜05-10・3品確定）\n出
+ 典: https://x.com/gogoatataka/status/2051796547743224200
+URL:https://x.com/gogoatataka/status/2051796547743224200
+END:VEVENT
+BEGIN:VEVENT
+UID:4030889fd490c933@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20260608
+DTEND;VALUE=DATE:20260609
+SUMMARY:羽田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:マグロ天身・紅富士・3品目未確認（〜06-14・2
+ 品のみ）\n出典: https://x.com/flying_drunkard/status/206556443232826
+ 5886
+URL:https://x.com/flying_drunkard/status/2065564432328265886
+END:VEVENT
+BEGIN:VEVENT
+UID:6f64e8552a5e2093@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20260713
+DTEND;VALUE=DATE:20260714
+SUMMARY:成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:マグロ天身・アトランティックサーモン・3品
+ 目未確認（〜07-19・2品のみ）\n出典: https://x.com/flying_drun
+ kard/status/2078274091472265354
+URL:https://x.com/flying_drunkard/status/2078274091472265354
+END:VEVENT
+BEGIN:VEVENT
+UID:a5ba26334bcfde3a@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20260810
+DTEND;VALUE=DATE:20260811
+SUMMARY:羽田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:マグロ天身・河豚・3品目未確認（〜08-16・2品
+ のみ）\n出典: https://x.com/flying_drunkard/status/208695505698603022
+ 4
+URL:https://x.com/flying_drunkard/status/2086955056986030224
+END:VEVENT
+BEGIN:VEVENT
+UID:efba59ab566067e0@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20260914
+DTEND;VALUE=DATE:20260915
+SUMMARY:羽田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ天身・カラスガレイ縁側・3品目未確
+ 認（〜09-20・2品のみ）\n出典: https://x.com/flying_drunkard/stat
+ us/2101092490011148779
+URL:https://x.com/flying_drunkard/status/2101092490011148779
+END:VEVENT
+BEGIN:VEVENT
+UID:a0a9756bd78fa2bb@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20260928
+DTEND;VALUE=DATE:20260929
+SUMMARY:未確認 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:マグロ天身・近大真鯛・玉子（〜10-04・3品確定
+ ）\n出典: https://x.com/hikoukitabi/status/2104684261253186027
+URL:https://x.com/hikoukitabi/status/2104684261253186027
+END:VEVENT
+BEGIN:VEVENT
+UID:08f84759005017cb@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261006
+SUMMARY:成田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:マグロ天身・河豚・3品目未確認（〜10-11・2品
+ のみ）\n出典: https://x.com/flying_drunkard/status/210871725676731221
+ 7
+URL:https://x.com/flying_drunkard/status/2108717256767312217
+END:VEVENT
+BEGIN:VEVENT
+UID:712f465bac806bf4@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20261102
+DTEND;VALUE=DATE:20261103
+SUMMARY:羽田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ中トロ・ヤリイカ・玉子（〜11-08・3品
+ 確定）\n出典: https://x.com/BooTaku/status/2117031763189100701
+URL:https://x.com/BooTaku/status/2117031763189100701
+END:VEVENT
+BEGIN:VEVENT
+UID:fa86d4444f2309ab@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+SUMMARY:羽田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:マグロ天身・紅富士・3品目未確認（〜11-15・2
+ 品のみ）\n出典: https://x.com/flying_drunkard/status/212088404653651
+ 1572
+URL:https://x.com/flying_drunkard/status/2120884046536511572
+END:VEVENT
+BEGIN:VEVENT
+UID:e722cae97f70fb4e@pplog-sushi
+DTSTAMP:20261121T080452Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:羽田 鮨鶴亭（JAL Fラウンジ） 寿司
+DESCRIPTION:本マグロ天身・のどぐろ・3品目未確認（〜11-22
+ ・2品のみ）\n出典: https://x.com/Chorouzu1017/status/21222635408663
+ 88193
+URL:https://x.com/Chorouzu1017/status/2122263540866388193
+END:VEVENT
+END:VCALENDAR
